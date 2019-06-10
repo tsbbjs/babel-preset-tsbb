@@ -1,0 +1,44 @@
+{
+  "name": "@tsbb/babel-preset-tsbb",
+  "version": "1.0.0",
+  "description": "tsbb babel preset.",
+  "main": "lib/index",
+  "scripts": {
+    "watch": "npm run watch:ts",
+    "watch:ts": "tsbb watch & npm run build:types -- --watch",
+    "build": "npm run build:ts & npm run build:types",
+    "build:ts": "tsbb build",
+    "build:types": "tsbb types"
+  },
+  "keywords": [
+    "tsbb",
+    "babel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tsbbjs/babel-preset-tsbb.git"
+  },
+  "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-transform-async-to-generator": "^7.4.4",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/runtime": "^7.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.7",
+    "tsbb": "0.0.20"
+  }
+}

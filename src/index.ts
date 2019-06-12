@@ -91,11 +91,10 @@ export default (options: IOptions): TransformOptions => {
       require.resolve('@babel/preset-typescript')
     ],
     plugins: [
-      require.resolve('@babel/plugin-proposal-object-rest-spread'),
-
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
       [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
 
+      require.resolve('@babel/plugin-proposal-object-rest-spread'),
       require.resolve('@babel/plugin-proposal-export-default-from'),
     ],
   } as TransformOptions;

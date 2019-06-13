@@ -1,4 +1,5 @@
 import { TransformOptions } from '@babel/core';
+import { ITransformRuntime } from './props';
 
 declare const require: any;
 // declare const module: any;
@@ -78,10 +79,21 @@ export interface IOptions {
    * Also note that cjs is just an alias for commonjs.  
    */
   modules?: 'amd' | 'umd' | 'systemjs' | 'commonjs' | 'cjs' | 'auto' | false;
+  transformRuntime?: ITransformRuntime;
 }
 
 export default (options: IOptions): TransformOptions => {
-  const { env = {}, targets = {}, loose = false, modules = 'auto', useBuiltIns = false } = options;
+  const { env = {}, targets = {}, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
+  const plugins = [
+    [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+    [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
+
+    require.resolve('@babel/plugin-proposal-object-rest-spread'),
+    require.resolve('@babel/plugin-proposal-export-default-from'),
+  ]
+  if (transformRuntime) {
+    plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime])
+  }
   return {
     presets: [
       [require.resolve('@babel/preset-env'), {
@@ -90,13 +102,6 @@ export default (options: IOptions): TransformOptions => {
       }],
       require.resolve('@babel/preset-typescript')
     ],
-    plugins: [
-      require.resolve('@babel/plugin-transform-runtime'),
-      [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
-      [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
-
-      require.resolve('@babel/plugin-proposal-object-rest-spread'),
-      require.resolve('@babel/plugin-proposal-export-default-from'),
-    ],
+    plugins,
   } as TransformOptions;
 }

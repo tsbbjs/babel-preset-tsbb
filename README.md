@@ -1,6 +1,12 @@
 babel-preset-tsbb
 ---
 
+![](https://www.travis-ci.org/tsbbjs/babel-preset-tsbb.svg?branch=master)
+![](https://img.shields.io/github/issues/tsbbjs/babel-preset-tsbb.svg)
+![](https://img.shields.io/github/forks/tsbbjs/babel-preset-tsbb.svg)
+![](https://img.shields.io/github/stars/tsbbjs/babel-preset-tsbb.svg)
+![](https://img.shields.io/npm/v/@tsbb/babel-preset-tsbb.svg)
+
 This package includes the [Babel](https://babeljs.io) preset used by tsbb.
 
 ## Install

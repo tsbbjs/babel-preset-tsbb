@@ -3,7 +3,7 @@
  * A plugin that enables the re-use of Babel's injected helper code to save on codesize.
  * https://babeljs.io/docs/en/next/babel-plugin-transform-runtime.html#options
  */
-export interface ITransformRuntime {
+export interface ITransformRuntimeOptions {
   /**
    * https://babeljs.io/docs/en/next/babel-plugin-transform-runtime.html#corejs
    * Specifying a number will rewrite the helpers that

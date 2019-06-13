@@ -1,5 +1,5 @@
 import { TransformOptions } from '@babel/core';
-import { ITransformRuntime } from './props';
+import { ITransformRuntimeOptions } from './props';
 
 declare const require: any;
 // declare const module: any;
@@ -79,7 +79,7 @@ export interface IOptions {
    * Also note that cjs is just an alias for commonjs.  
    */
   modules?: 'amd' | 'umd' | 'systemjs' | 'commonjs' | 'cjs' | 'auto' | false;
-  transformRuntime?: ITransformRuntime;
+  transformRuntime?: ITransformRuntimeOptions | boolean;
 }
 
 export default (options: IOptions): TransformOptions => {

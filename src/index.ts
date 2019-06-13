@@ -85,9 +85,12 @@ export interface IOptions {
 export default (options: IOptions): TransformOptions => {
   const { env = {}, targets = {}, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
   const plugins = [
+    require.resolve('@babel/plugin-syntax-dynamic-import'),
+
     [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
     [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
 
+    require.resolve('@babel/plugin-transform-async-to-generator'),
     require.resolve('@babel/plugin-proposal-object-rest-spread'),
     require.resolve('@babel/plugin-proposal-export-default-from'),
   ]

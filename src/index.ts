@@ -2,7 +2,7 @@ import { TransformOptions } from '@babel/core';
 import { ITransformRuntimeOptions } from './props';
 
 declare const require: any;
-// declare const module: any;
+declare const module: any;
 
 /**
  * [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env) is a smart preset that allows you to use the latest JavaScript without
@@ -82,7 +82,7 @@ export interface IOptions {
   transformRuntime?: ITransformRuntimeOptions | boolean;
 }
 
-export default (options: IOptions): TransformOptions => {
+export default function(context: any, options: IOptions): TransformOptions {
   const { env = {}, targets = {}, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
   const plugins = [
     require.resolve('@babel/plugin-syntax-dynamic-import'),
@@ -92,6 +92,7 @@ export default (options: IOptions): TransformOptions => {
 
     require.resolve('@babel/plugin-transform-async-to-generator'),
     require.resolve('@babel/plugin-proposal-object-rest-spread'),
+    require.resolve('@babel/plugin-proposal-export-namespace-from'),
     require.resolve('@babel/plugin-proposal-export-default-from'),
   ]
   if (transformRuntime) {

@@ -83,7 +83,7 @@ export interface IOptions {
 }
 
 export default function(context: any, options: IOptions): TransformOptions {
-  const { env = {}, targets = {}, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
+  const { env = {}, targets, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
   const plugins = [
     require.resolve('@babel/plugin-syntax-dynamic-import'),
 

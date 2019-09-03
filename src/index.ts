@@ -110,38 +110,52 @@ export interface IOptions {
    */
   modules?: 'amd' | 'umd' | 'systemjs' | 'commonjs' | 'cjs' | 'auto' | false;
   transformRuntime?: ITransformRuntimeOptions | boolean;
+  /**
+   * Is TypeScript Enabled
+   * default `true`
+   */
+  typescript?: boolean;
 }
 
-export default function(context: any, options: IOptions): TransformOptions {
-  const { env = {}, targets, presetReact, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
-  const plugins = [
-    require.resolve('@babel/plugin-syntax-dynamic-import'),
+export default function(context: any, options: IOptions, env: string): TransformOptions {
+  const { typescript = true, targets, presetReact, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
+  const isTypeScriptEnabled = typescript;
 
-    [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
-    [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
-
-    require.resolve('@babel/plugin-transform-async-to-generator'),
-    require.resolve('@babel/plugin-proposal-object-rest-spread'),
-    require.resolve('@babel/plugin-proposal-export-namespace-from'),
-    require.resolve('@babel/plugin-proposal-export-default-from'),
-  ]
-  if (transformRuntime) {
-    plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime])
-  }
   const conf: TransformOptions = {
     presets: [
       [require.resolve('@babel/preset-env'), {
         targets, loose, modules, useBuiltIns,
-        ...env,
+        ...options.env,
       }],
-      require.resolve('@babel/preset-typescript')
-    ],
-    plugins,
+      isTypeScriptEnabled && [require.resolve('@babel/preset-typescript')],
+    ].filter(Boolean),
+    plugins: [
+      require.resolve('@babel/plugin-syntax-dynamic-import'),
+
+      // Turn on legacy decorators for TypeScript files
+      isTypeScriptEnabled && [
+        require('@babel/plugin-proposal-decorators').default,
+        false,
+      ],
+      [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
+
+      require.resolve('@babel/plugin-transform-async-to-generator'),
+      require.resolve('@babel/plugin-proposal-object-rest-spread'),
+      require.resolve('@babel/plugin-proposal-export-namespace-from'),
+      require.resolve('@babel/plugin-proposal-export-default-from'),
+      // Polyfills the runtime needed for async/await, generators, and friends
+      // https://babeljs.io/docs/en/babel-plugin-transform-runtime
+      transformRuntime && [
+        require.resolve('@babel/plugin-transform-runtime'), transformRuntime
+      ],
+    ].filter(Boolean),
   }
+
   if (presetReact && presetReact !== true) {
-    conf.presets.push(['@babel/preset-react', presetReact]);
+    conf.presets.push([require.resolve('@babel/preset-react'), presetReact]);
   } else if (presetReact) {
-    conf.presets.push('@babel/preset-react');
+    conf.presets.push(require.resolve('@babel/preset-react'));
   }
+
   return conf;
 }

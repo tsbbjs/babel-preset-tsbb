@@ -4,6 +4,35 @@ import { ITransformRuntimeOptions } from './props';
 declare const require: any;
 declare const module: any;
 
+export interface PresetReact {
+  /**
+   * Replace the function used when compiling JSX expressions.
+   * `string`, defaults to `React.createElement`.
+   */
+  pragma?: string;
+  /**
+   * Replace the component used when compiling JSX fragments.
+   * `string`, defaults to `React.Fragment`.
+   */
+  pragmaFrag?: string;
+  /**
+   * Will use the native built-in instead of trying to polyfill behavior for any plugins that require one.
+   * `boolean`, defaults to `false`.
+   */
+  useBuiltIns?: boolean;
+  /**
+   * `boolean`, defaults to `false`.
+   * Toggles plugins that aid in development, such as @babel/plugin-transform-react-jsx-self and @babel/plugin-transform-react-jsx-source.
+   * This is useful when combined with the [env option](https://babeljs.io/docs/en/next/options#env) configuration or [js config files](https://babeljs.io/docs/en/next/config-files#javascript).
+   */
+  development?: boolean;
+  /**
+   * Replace the component used when compiling JSX fragments.
+   * `boolean`, defaults to `true`.
+   */
+  throwIfNamespace?: boolean;
+}
+
 /**
  * [`@babel/preset-env`](https://babeljs.io/docs/en/next/babel-preset-env) is a smart preset that allows you to use the latest JavaScript without
  * needing to micromanage which syntax transforms (and optionally,
@@ -15,6 +44,7 @@ export interface IOptions {
    * `@babel/preset-env` Options.
    */
   env?: any;
+  presetReact?: boolean | PresetReact;
   /**
    * Describes the environments you support/target for your project.
    * This can either be a [browserslist-compatible](https://github.com/ai/browserslist) query
@@ -83,7 +113,7 @@ export interface IOptions {
 }
 
 export default function(context: any, options: IOptions): TransformOptions {
-  const { env = {}, targets, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
+  const { env = {}, targets, presetReact, loose = false, modules = 'auto', useBuiltIns = false, transformRuntime } = options;
   const plugins = [
     require.resolve('@babel/plugin-syntax-dynamic-import'),
 
@@ -98,7 +128,7 @@ export default function(context: any, options: IOptions): TransformOptions {
   if (transformRuntime) {
     plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime])
   }
-  return {
+  const conf: TransformOptions = {
     presets: [
       [require.resolve('@babel/preset-env'), {
         targets, loose, modules, useBuiltIns,
@@ -107,5 +137,11 @@ export default function(context: any, options: IOptions): TransformOptions {
       require.resolve('@babel/preset-typescript')
     ],
     plugins,
-  } as TransformOptions;
+  }
+  if (presetReact && presetReact !== true) {
+    conf.presets.push(['@babel/preset-react', presetReact]);
+  } else if (presetReact) {
+    conf.presets.push('@babel/preset-react');
+  }
+  return conf;
 }

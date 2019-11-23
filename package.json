@@ -1,6 +1,6 @@
 {
   "name": "@tsbb/babel-preset-tsbb",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "tsbb babel preset.",
   "main": "lib/index",
   "scripts": {

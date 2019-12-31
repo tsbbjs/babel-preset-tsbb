@@ -134,8 +134,8 @@ export default function(context: any, options: IOptions, env: string): Transform
 
       // Turn on legacy decorators for TypeScript files
       isTypeScriptEnabled && [
-        require('@babel/plugin-proposal-decorators').default,
-        false,
+        require.resolve('@babel/plugin-proposal-decorators'),
+        { "legacy": true },
       ],
       [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
 

@@ -143,6 +143,7 @@ export default function(context: any, options: IOptions, env: string): Transform
       require.resolve('@babel/plugin-proposal-object-rest-spread'),
       require.resolve('@babel/plugin-proposal-export-namespace-from'),
       require.resolve('@babel/plugin-proposal-export-default-from'),
+      require.resolve('babel-plugin-add-module-exports'),
       // Polyfills the runtime needed for async/await, generators, and friends
       // https://babeljs.io/docs/en/babel-plugin-transform-runtime
       transformRuntime && [

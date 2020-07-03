@@ -47,7 +47,7 @@
     "babel-plugin-transform-rename-import": "2.3.0"
   },
   "devDependencies": {
-    "@types/node": "12.12.38",
+    "@types/node": "12.12.47",
     "tsbb": "1.7.4"
   }
 }

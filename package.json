@@ -48,6 +48,6 @@
   },
   "devDependencies": {
     "@types/node": "12.19.2",
-    "tsbb": "1.7.6"
+    "tsbb": "1.7.9"
   }
 }

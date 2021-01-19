@@ -1,11 +1,11 @@
 babel-preset-tsbb
 ---
 
-![](https://www.travis-ci.org/tsbbjs/babel-preset-tsbb.svg?branch=master)
-![](https://img.shields.io/github/issues/tsbbjs/babel-preset-tsbb.svg)
-![](https://img.shields.io/github/forks/tsbbjs/babel-preset-tsbb.svg)
-![](https://img.shields.io/github/stars/tsbbjs/babel-preset-tsbb.svg)
-![](https://img.shields.io/npm/v/@tsbb/babel-preset-tsbb.svg)
+[![Build](https://github.com/tsbbjs/babel-preset-tsbb/workflows/Build/badge.svg)](https://github.com/tsbbjs/babel-preset-tsbb/actions)
+[![Issues](https://img.shields.io/github/issues/tsbbjs/babel-preset-tsbb.svg)](https://github.com/tsbbjs/babel-preset-tsbb/issues)
+[![Forks](https://img.shields.io/github/forks/tsbbjs/babel-preset-tsbb.svg)](https://github.com/tsbbjs/babel-preset-tsbb/network/members)
+[![Stars](https://img.shields.io/github/stars/tsbbjs/babel-preset-tsbb.svg)](https://github.com/tsbbjs/babel-preset-tsbb/stargazers)
+[![npm version](https://img.shields.io/npm/v/@tsbb/babel-preset-tsbb.svg)](https://www.npmjs.com/package/@tsbb/babel-preset-tsbb)
 
 This package includes the [Babel](https://babeljs.io) preset used by tsbb.
 

@@ -2,7 +2,8 @@
   "name": "@tsbb/babel-preset-tsbb",
   "version": "1.12.1",
   "description": "tsbb babel preset.",
-  "main": "lib/index",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run watch:ts",
@@ -28,26 +29,26 @@
     "src"
   ],
   "dependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
-    "@babel/plugin-proposal-export-default-from": "^7.8.3",
-    "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@babel/plugin-proposal-export-default-from": "^7.12.1",
+    "@babel/plugin-proposal-export-namespace-from": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-async-to-generator": "^7.8.3",
-    "@babel/plugin-transform-modules-umd": "^7.9.0",
-    "@babel/plugin-transform-runtime": "^7.9.6",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
-    "@babel/runtime": "^7.9.6",
-    "babel-plugin-add-module-exports": "^1.0.2",
-    "babel-plugin-transform-remove-imports": "1.4.1",
+    "@babel/plugin-transform-async-to-generator": "^7.12.1",
+    "@babel/plugin-transform-modules-umd": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.12.5",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-transform-remove-imports": "1.5.2",
     "babel-plugin-transform-rename-import": "2.3.0"
   },
   "devDependencies": {
-    "@types/node": "12.19.2",
-    "tsbb": "1.7.6"
+    "@types/node": "14.14.21",
+    "tsbb": "2.0.0"
   }
 }

@@ -39,4 +39,10 @@ export interface ITransformRuntimeOptions {
    * defaults to `false`.
    */
   absoluteRuntime?: boolean;
+  /**
+   * By default transform-runtime assumes that @babel/runtime@7.0.0 is installed.
+   * If you have later versions of @babel/runtime (or their corejs counterparts e.g. @babel/runtime-corejs3) installed or listed as a dependency,
+   * transform-runtime can use more advanced features.
+   */
+  version?: string;
 }

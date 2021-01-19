@@ -1,4 +1,4 @@
-babel-preset-tsbb
+@tsbb/babel-preset-tsbb
 ---
 
 [![Build](https://github.com/tsbbjs/babel-preset-tsbb/workflows/Build/badge.svg)](https://github.com/tsbbjs/babel-preset-tsbb/actions)
@@ -12,7 +12,7 @@ This package includes the [Babel](https://babeljs.io) preset used by tsbb.
 ## Install
 
 ```bash
-npm i babel-preset-tsbb
+npm i @tsbb/babel-preset-tsbb
 ```
 
 ## Usage Outside of tsbb

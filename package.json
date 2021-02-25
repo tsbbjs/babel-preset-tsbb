@@ -1,6 +1,6 @@
 {
   "name": "@tsbb/babel-preset-tsbb",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "description": "tsbb babel preset.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -29,7 +29,7 @@
     "src"
   ],
   "dependencies": {
-    "@babel/core": "^7.13.1",
+    "@babel/core": "^7.12.17",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/plugin-proposal-export-default-from": "^7.12.13",

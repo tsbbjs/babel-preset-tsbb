@@ -3,7 +3,7 @@ import { ITransformRuntimeOptions } from './props';
 
 declare const require: any;
 declare const module: any;
-
+export * from './props';
 export interface PresetReact {
   /**
    * Replace the function used when compiling JSX expressions.

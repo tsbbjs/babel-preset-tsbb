@@ -41,7 +41,7 @@
     "@babel/preset-typescript": "7.16.5",
     "@babel/runtime": "7.16.5",
     "babel-plugin-add-module-exports": "1.0.4",
-    "babel-plugin-transform-remove-imports": "1.7.0",
+    "babel-plugin-transform-remove-imports": "1.8.0",
     "babel-plugin-transform-rename-import": "2.3.0"
   },
   "devDependencies": {
